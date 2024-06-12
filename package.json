@@ -1,0 +1,21 @@
+{
+  "name": "ts-ticket-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "del /s /q build",
+    "build": "tsc --build",
+    "start": "npm run clean && npm run build && node build/index.js",
+    "startNoClean": "npm run build && node build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "glob": "^10.4.1",
+    "grep": "^0.1.0",
+    "mongoose": "^8.4.1"
+  }
+}
