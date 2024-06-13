@@ -23,6 +23,9 @@ export default class New extends Command {
     async Execute(interaction: ChatInputCommandInteraction){
         await interaction.deferReply({ephemeral: true});
         if (!interaction.guild) return;
+        if(!interaction.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)){
+            return interaction.editReply({embeds: [new EmbedBuilder().setColor("Red").setTitle("Error").setDescription("❌ I need the `MANAGE_CHANNELS` permission to create a ticket")]}); 
+        }
         const errorEmbed = new EmbedBuilder().setColor("Red").setTitle("Error");
         const settings = await GuildSettings.findOne({guildId: interaction.guildId});
         if (!settings || !(await GuildSettings.exists({guildId: interaction.guildId}))){
@@ -35,6 +38,15 @@ export default class New extends Command {
         if (!categoryId){
             return interaction.editReply({embeds: [errorEmbed.setDescription("❌ The ticket category is not set")]})
         }
+
+        const ticketLimit = settings.ticketSettings.ticketLimit || 1;
+        if (ticketLimit){
+            const tickets = await Ticket.find({guildId: interaction.guildId, creatorId: interaction.user.id, state: TicketStates.Open});
+            if (tickets.length >= ticketLimit){
+                return interaction.editReply({embeds: [errorEmbed.setDescription(`❌ The ticket limit has been reached. (${ticketLimit})`)]})
+            }
+        }
+
         const category = interaction.guild.channels.cache.get(categoryId);
         let supportRoles = [], adminRoles = [];
         for(const role of settings.ticketSettings.supportRoles){

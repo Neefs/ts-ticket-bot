@@ -77,6 +77,19 @@ export default class TicketSettings extends Command {
                             required: true
                         }
                     ]
+                },
+                {
+                    name: "ticket-limit",
+                    description: "Set the ticket limit",
+                    type: ApplicationCommandOptionType.Subcommand,
+                    options: [
+                        {
+                            name: "value",
+                            description: "The value to set",
+                            type: ApplicationCommandOptionType.Integer,
+                            required: false
+                        }
+                    ]
                 }
             ]         
         })

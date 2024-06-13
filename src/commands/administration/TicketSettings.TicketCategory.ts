@@ -3,7 +3,7 @@ import CustomClient from "../../base/classes/CustomClient";
 import SubCommand from "../../base/classes/SubCommand";
 import GuildSettings from "../../base/schemas/GuildSettings";
 
-export default class TicketCategory extends SubCommand {
+export default class TicketSettingsTicketCategory extends SubCommand {
     constructor(client: CustomClient){
         super(client, {
             name: "ticketsettings.ticket-category"
