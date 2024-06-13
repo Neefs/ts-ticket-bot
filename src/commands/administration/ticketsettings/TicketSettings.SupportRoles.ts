@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, CacheType, EmbedBuilder } from "discord.js";
-import CustomClient from "../../base/classes/CustomClient";
-import SubCommand from "../../base/classes/SubCommand";
-import GuildSettings from "../../base/schemas/GuildSettings";
+import CustomClient from "../../../base/classes/CustomClient";
+import SubCommand from "../../../base/classes/SubCommand";
+import GuildSettings from "../../../base/schemas/GuildSettings";
 
 export default class TicketSettingsSupportRoles extends SubCommand{
     constructor(client: CustomClient){

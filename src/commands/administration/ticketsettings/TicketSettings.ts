@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType, PermissionsBitField } from "discord.js";
-import Command from "../../base/classes/Command";
-import CustomClient from "../../base/classes/CustomClient";
-import Category from "../../base/enums/Category";
+import Command from "../../../base/classes/Command";
+import CustomClient from "../../../base/classes/CustomClient";
+import Category from "../../../base/enums/Category";
 
 export default class TicketSettings extends Command {
     constructor(client:CustomClient){
