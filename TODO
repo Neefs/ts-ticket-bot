@@ -1,0 +1,7 @@
+channel delete event:
+    check if its a ticket
+    if it is set it as archived
+
+close command
+add member
+remove member
