@@ -14,7 +14,7 @@ export default class TicketCategory extends SubCommand {
         const category = interaction.options.getChannel("category");
         const errorEmbed = new EmbedBuilder().setColor("Red");
         await interaction.deferReply({ ephemeral: true });
-        if (category && category.type !== ChannelType.GuildCategory) {interaction.editReply({embeds: [errorEmbed.setDescription("❌ Please provide a valid category.")]})}
+        if (category && category.type !== ChannelType.GuildCategory) {return interaction.editReply({embeds: [errorEmbed.setDescription("❌ Please provide a valid category.")]})}
         if (!(await GuildSettings.exists({guildId: interaction.guildId}))){
             if(category){
                 await GuildSettings.create({guildId: interaction.guildId, ticketSettings: {categoryId: category.id}});
