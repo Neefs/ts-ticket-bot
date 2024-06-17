@@ -3,5 +3,6 @@ channel delete event:
     if it is set it as archived
 
 close command
+claim command
 add member
 remove member
